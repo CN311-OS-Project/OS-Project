@@ -20,12 +20,12 @@ public class Client {
         new Thread(connection).start();
 
         while (true) {
-            System.out.print(" : ");
             String command = keyboard.readLine();
-
-            if (command.equals("quit"))
+            String temp = username + "," + command;
+            
+            if (command.equals("exit"))
                 break;
-            output.println(command);
+            output.println(temp);
         }
 
         socket.close();

@@ -8,20 +8,27 @@ public class Server implements Runnable {
 
     public static void main(String[] args) throws IOException {
         ServerSocket listener = new ServerSocket(PORT);
+        System.out.println(randomCon());
 
         while (true) {
             System.out.println(" [Server] Waiting for client connection....");
             Socket client = listener.accept();
-            for (ClientHandler s : clients) {
-                System.out.println(s);
-            }
             System.out.println(" [Server] connect to client!");
+            
             ClientHandler client_thread = new ClientHandler(client, clients);
             clients.add(client_thread);
             Thread starter = new Thread(client_thread);
             starter.start();
         }
 
+    }
+
+    @Override
+    public void run()  {
+        throw new UnsupportedOperationException("Error");
+    }
+    public static String randomCon() {
+        return "TEST";
     }      
     
 }

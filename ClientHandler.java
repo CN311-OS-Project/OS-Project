@@ -22,12 +22,14 @@ public class ClientHandler implements Runnable {
         
         try {
             while ((stream = input.readLine()) != null){
-                System.out.println(stream);
-                output.println(stream);
+                String data[] = stream.split(",");
+
+                System.out.println(data[0] + " : " + data[1]);
+
                 if(stream.startsWith("hi")){
                     output.println("Welcome to my server");
                 }else{
-                    outToAll(stream);
+                    outToAll(data[0] + " : " + data[1]);
                 }
                 
                 
